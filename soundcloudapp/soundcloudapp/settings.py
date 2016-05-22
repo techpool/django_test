@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'audioupload.apps.AudiouploadConfig',
     'soundcloud_connect.apps.SoundcloudConnectConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -124,3 +125,6 @@ STATIC_URL = '/static/'
 SOUNCLOUD_CLIENT_ID = 'f6b20b75208b835e74176645d6ff3223'
 SOUNCLOUD_CLIENT_SECRET = 'dedd03a504e5144b7a2079515d8cee0e'
 SOUNCLOUD_REDIRECT_URI = 'http://localhost:8000/soundcloud/callback'
+
+ENV_PATH = os.path.abspath(os.path.dirname(__file__))
+MEDIA_ROOT = os.path.join(ENV_PATH, 'media/')

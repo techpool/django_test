@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
+	url(r'^audioupload/', include('audioupload.urls')),
 	url(r'^soundcloud/', include('soundcloud_connect.urls')),
     url(r'^admin/', admin.site.urls),
 ]
