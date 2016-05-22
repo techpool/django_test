@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'soundcloud_connect.apps.SoundcloudConnectConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -119,3 +120,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+SOUNCLOUD_CLIENT_ID = 'f6b20b75208b835e74176645d6ff3223'
+SOUNCLOUD_CLIENT_SECRET = 'dedd03a504e5144b7a2079515d8cee0e'
+SOUNCLOUD_REDIRECT_URI = 'http://localhost:8000/soundcloud/callback'
