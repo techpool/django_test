@@ -66,7 +66,7 @@ def upload(request):
 		form = SongUploadForm()
 
 	# The form is being rendered in the form of paragraphs
-	return render(request, 'audioupload/upload.html', {'form': form.as_p()})
+	return render(request, 'audioupload/upload.html', {'form': form})
 
 # View to handle the successful submission of the form
 def success(request):
@@ -148,15 +148,15 @@ def download_song(request):
 
 			return response
 		else:
-			return HttpResponse("You must follow the user to download your track")
+			return HttpResponse(status=404)
 	else:
 		if isFollowing:
-			return HttpResponse("You must unfollow the user to download your track")
+			return HttpResponse(status=404)
 		else:
 			path_to_song = settings.MEDIA_ROOT + user_data.song.url
 			file = open(path_to_song, "rb")
 			response = HttpResponse(FileWrapper(file), content_type='audio/mpeg')
-			response['Content-Disposition'] = 'attachment; filename=song.jpeg'
+			response['Content-Disposition'] = 'attachment; filename=song.mp3'
 			file.close()
 
 	

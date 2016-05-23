@@ -1,4 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Success</title>
+	<script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+	<!-- Compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<!-- Compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+	
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
 <body>
-	{{audio_player | safe}}
-	<a href="/audioupload/download/"><button>Download Song</button></a>
+	<div class="container">
+		<div class="row center-align heading">
+			<h1 class="flow-text">PLAY AND DOWNLOAD</h1>
+		</div>
+		<div class="form center-align">
+			{{audio_player | safe}}
+			<a class="waves-effect waves-light btn-large download_button" style="margin-bottom: 10px;">Download</a>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		$('.download_button').click(function() {
+			
+			$.ajax({
+			  	url: "download",
+			  	success: function() {
+					window.location = "download"  		
+			  	},
+			  	error: function() {
+			  		Materialize.toast('Hey you need to follow the user', 4000) // 4000 is the duration of the toast
+			  	}
+			})
+		})
+	</script>
 </body>
+</html>
